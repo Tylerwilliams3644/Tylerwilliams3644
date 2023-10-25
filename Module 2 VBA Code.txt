@@ -46,3 +46,78 @@ Next i
 
 End Sub
 
+
+
+Open/Close
+Sub changetest()
+
+Dim Yearly_Change As Double
+Yearly_Change = 0
+Dim Open_Number As Double
+Dim Close_Number As Double
+
+lastrow = Cells(Rows.Count, 1).End(xlUp).Row
+
+For i = 2 To lastrow
+    
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+    
+        Close_Number = Cells(i, 6).Value
+        
+        MsgBox ("Close Number " & Close_Number)
+        
+    ElseIf Cells(i - 1, 1).Value <> Cells(i, 1).Value Then
+    
+        Open_Number = Cells(i, 3).Value
+        
+        MsgBox ("Open Number " & Open_Number)
+    
+    
+    
+        
+    End If
+    
+Next i
+    
+End Sub
+
+
+Sub Yearchangetest()
+Dim Yearly_Change As Double
+Yearly_Change = 0
+Dim Open_Number As Double
+Open_Number = 0
+Dim Close_Number As Double
+Close_Number = 0
+
+lastrow = Cells(Rows.Count, 1).End(xlUp).Row
+
+For i = 2 To lastrow
+    
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+    
+        Close_Number = Cells(i, 6).Value
+        
+        MsgBox ("Close Number " & Close_Number)
+        
+       ' Close_Number = Close_Number + 1
+        
+    ElseIf Cells(i - 1, 1).Value <> Cells(i, 1).Value Then
+    
+        Open_Number = Cells(i, 3).Value
+        
+        MsgBox ("Open Number " & Open_Number)
+        
+        ' Open_Number = Open_Number + 1
+        
+        ' Yearly_Change = Close_Number + Open_Number
+        
+        ' MsgBox ("Yearly Change " & Yearly_Change)
+    
+        
+    End If
+    
+Next i
+    
+End Sub
+
