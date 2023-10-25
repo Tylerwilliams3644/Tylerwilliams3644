@@ -1,0 +1,48 @@
+Sub Ticker()
+
+Dim Ticker_Name As String
+
+Dim Summary_Table_Row As Integer
+Summary_Table_Row = 2
+
+Dim Ticker_Total As Double
+Ticker_Total = 0
+
+lastrow = Cells(Rows.Count, 1).End(xlUp).Row
+
+For Each ws In Worksheets
+
+ws.Cells(1, 9).Value = "Ticker Name"
+ws.Cells(1, 10).Value = "Yearly Change"
+ws.Cells(1, 11).Value = "Percent Change"
+ws.Cells(1, 12).Value = "Total Stock Volume"
+
+Next ws
+
+For i = 2 To lastrow
+
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+
+    Ticker_Name = Cells(i, 1).Value
+    
+    Ticker_Total = Ticker_Total + Cells(i, 7).Value
+
+    Range("I" & Summary_Table_Row).Value = Ticker_Name
+    
+    Range("L" & Summary_Table_Row).Value = Ticker_Total
+
+    Summary_Table_Row = Summary_Table_Row + 1
+    
+    Ticker_Total = 0
+    
+Else
+
+    Ticker_Total = Ticker_Total + Cells(i, 7).Value
+    
+End If
+    
+Next i
+
+
+End Sub
+
